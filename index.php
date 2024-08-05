@@ -14,6 +14,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE HTML>
 <html>
 	<head>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+        }
+        label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+			accent-color: blue; /* This CSS property changes the color of radio buttons */
+        }
+    </style>
 		<title>NDA</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -65,12 +79,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             ?>
         </select><br><br>
-
-        <label for="gender">Gender:</label>
-        <input type="radio" id="male" name="gender" value="male" required>
-        <label for="male">Male</label>
-        <input type="radio" id="female" name="gender" value="female" required>
-        <label for="female">Female</label><br><br>
+		<label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Gideon</option>
+        </select><br><br>
 
         <input type="submit" value="Next">
     </form>
