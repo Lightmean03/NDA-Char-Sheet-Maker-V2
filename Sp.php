@@ -158,19 +158,33 @@ New Dark Age Charcter Sheet Creator</p>
 												<p>Attribute Points Distribution (10 points to distribute, max 5 per attribute):</p>
 												
 											</header>
-<form method="POST">
+											 <form method="POST">
+        <label for="species">Select a species:</label>
+        <select id="species" name="species" onchange="updateDescription()">
             <?php foreach ($species_list as $species_name => $species_data): ?>
-                <div class="species-option">
-                    <label>
-                        <input type="radio" name="species" value="<?php echo $species_name; ?>" <?php echo ($selected_species === $species_name) ? 'checked' : ''; ?>>
-                        <?php echo $species_name; ?>
-                    </label>
-                    <textarea readonly><?php echo $species_data['description']; ?></textarea>
-                </div>
+                <option value="<?php echo $species_name; ?>" <?php echo ($selected_species === $species_name) ? 'selected' : ''; ?>>
+                    <?php echo $species_name; ?>
+                </option>
             <?php endforeach; ?>
-            <button type="submit">Next</button>
-        </form>
+        </select>
+        <div class="species-description">
+            <textarea id="species-description" readonly>
+                <?php echo $selected_species ? $species_list[$selected_species]['description'] : 'Please select a species.'; ?>
+            </textarea>
+        </div>
+        <button type="submit">Next</button>
+    </form>
 
+    <script>
+        const speciesList = <?php echo json_encode($species_list); ?>;
+        const speciesSelect = document.getElementById('species');
+        const descriptionTextarea = document.getElementById('species-description');
+
+        function updateDescription() {
+            const selectedSpecies = speciesSelect.value;
+            descriptionTextarea.value = speciesList[selectedSpecies]['description'];
+        }
+    </script>
 										<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
