@@ -168,9 +168,16 @@ New Dark Age Charcter Sheet Creator</p>
             <?php endforeach; ?>
         </select>
         <div class="species-description">
-            <textarea id="species-description" readonly>
-                <?php echo $selected_species ? $species_list[$selected_species]['description'] : 'Please select a species.'; ?>
-            </textarea>
+		<textarea id="species-description" readonly><?php 
+                if ($selected_species) {
+                    echo "Health: " . $species_list[$selected_species]['health'] . "\n";
+                    echo "Blood: " . $species_list[$selected_species]['blood'] . "\n";
+                    echo "Size: " . $species_list[$selected_species]['size'] . "\n";
+                    echo "Description: " . $species_list[$selected_species]['description'];
+                } else {
+                    echo "Please select a species.";
+                }
+            ?></textarea>
         </div>
         <button type="submit">Next</button>
     </form>
@@ -182,7 +189,14 @@ New Dark Age Charcter Sheet Creator</p>
 
         function updateDescription() {
             const selectedSpecies = speciesSelect.value;
-            descriptionTextarea.value = speciesList[selectedSpecies]['description'];
+            if (selectedSpecies) {
+                descriptionTextarea.value = "Health: " + speciesList[selectedSpecies]['health'] + "\n" +
+                                            "Blood: " + speciesList[selectedSpecies]['blood'] + "\n" +
+                                            "Size: " + speciesList[selectedSpecies]['size'] + "\n" +
+                                            "Description: " + speciesList[selectedSpecies]['description'];
+            } else {
+                descriptionTextarea.value = "Please select a species.";
+            }
         }
     </script>
 										<!-- Scripts -->
