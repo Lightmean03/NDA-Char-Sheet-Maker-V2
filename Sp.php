@@ -154,8 +154,8 @@ New Dark Age Charcter Sheet Creator</p>
 										<article class="box page-content">
 
 											<header>
-												<h2>Attributes</h2>
-												<p>Attribute Points Distribution (10 points to distribute, max 5 per attribute):</p>
+												<h2>Species</h2>
+												<p>Just think about the Racsism</p>
 												
 											</header>
 											 <form method="POST">
